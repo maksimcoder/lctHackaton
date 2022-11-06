@@ -19,6 +19,10 @@ const router = createBrowserRouter([
 				path: ERoutes.Library,
 				element: RoutesComponents[ERoutes.Library],
 			},
+			{
+				path: ERoutes.Generator,
+				element: RoutesComponents[ERoutes.Generator],
+			},
 		],
 	},
 ]);

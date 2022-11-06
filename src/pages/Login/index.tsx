@@ -65,7 +65,7 @@ const Login: React.FC = () => {
 			setLoading(true);
 			await logIn(login, password);
 			setLoading(false);
-			navigate('/protected/gallery');
+			navigate('/protected/library');
 		} catch (error) {
 			setError(true);
 			setLoading(false);
