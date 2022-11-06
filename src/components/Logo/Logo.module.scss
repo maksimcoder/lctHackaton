@@ -10,11 +10,14 @@
 
     padding-block: 28px;
     padding-inline: 37px;
-
-    box-shadow: 0px 4px 20px 0px $shadow;
+    
     border-radius: 41px;
 
     background-color: white;
+}
+
+.shadowed {
+    box-shadow: 0px 4px 20px 0px $shadow;
 }
 
 .icon {
