@@ -1,40 +1,32 @@
-# Personal project template
-This project is maintained by Maksim Deviatilov.
+# DICOM file viewer
 
+
+Welcome, this repo is devoted to the DICOM files.
+
+The main logic includes:
+- Login
+- Library - list of all projects (markup, DICOMs, etc.)
+- Editor - DICOM file editor (markup, save and post)
+- Generator - generating patologies in DICOM files
 ## Run Locally
 Below are the instructions on how to setup the template correctly:
 
-**Use the template**
+**Common as anything**
 
+- Clone the repo
 ```bash
-  npx create-react-app [app-name] --template ts-redux-boiler
+git clone https://github.com/maksimcoder/lctHackaton.git
 ```
 
-**Go to the project directory**
-
+- Install dependencies
 ```bash
-  cd [app-name]
+npm install
 ```
 
-**All dependeincies will be installed but you have to setup _husky_**
-
+- Run Locally
 ```bash
-  npx husky-init
+npm start
 ```
-
-**After husky init you need to change script in husky folder**
-
-Copy this to the `pre-commit` file
-
-```bash
-  #!/bin/sh
-  . "$(dirname "$0")/_/husky.sh"
-
-  npx lint-staged
-
-```
-
-**Change this readme with yours**
 
 **All steps are done, happy hacking!**
 ## Structure
@@ -53,13 +45,14 @@ Copy this to the `pre-commit` file
 ├─ assets - Images, styles, fonts
 ├─ components - Main directory which contains all components
 │  └─ utils - All utility components (may be deleted)
-├─ hooks - Contains all hooks (redux, utils, etc.)
+├─ editor - Contains DICOM editor (types, class)
 ├─ pages - Main directory which contains all pages
-├─ redux - example directory (may be deleted)
+│  └─ Login - Login page
+│  └─ Generator - Page with patologies Generator
+│  └─ Library - Page with cards of other researches
 ├─ router - Contains RR router and main routes
 │  └─ routes - main routes
 │  └─ router.ts - React-Router controller of routes
-├─ store - Redux store
 ├─ theme - Material UI theme files
 ├─ utils - All utility functions
 ├─ .eslintrc.json - ESLint settings
@@ -69,7 +62,6 @@ Copy this to the `pre-commit` file
 ├─ lint-staged.config.js - Lint-Staged config
 ├─ tsconfig.json - TypeScript config
 ```
-
 
 ## Prettier and Pre-commit (lint-staged)
 
@@ -110,27 +102,3 @@ Below is an example:
 ## Support
 
 For any support, email maintaner of the project.
-
-## Legal
-
-MIT License
-
-Copyright (c) [22.10.2022] [Deviatilov Maksim Evgenievich]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
