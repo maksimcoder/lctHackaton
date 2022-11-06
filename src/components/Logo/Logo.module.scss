@@ -1,0 +1,23 @@
+@import '/src/assets/styles/variables.scss';
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    max-width: 242px;
+
+    padding-block: 28px;
+    padding-inline: 37px;
+
+    box-shadow: 0px 4px 20px 0px $shadow;
+    border-radius: 41px;
+
+    background-color: white;
+}
+
+.icon {
+    max-width: 52px;
+    max-height: 52px;
+}

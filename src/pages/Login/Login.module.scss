@@ -1,0 +1,51 @@
+@import '../../assets/styles/mixins.scss';
+
+.loginPage {
+    display: flex;
+    gap: 5vw;
+}
+
+.photoPart {
+    width: 38vw;
+    height: 100vh;
+
+    background-image: url('../../assets/images/Login/bkgPhoto.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logoLayer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    height: 100%;
+
+    padding-block-end: 10vh;
+}
+
+.logo {
+    @include flexCenter();
+}
+
+.logicPart {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    width: calc(100vw - (38vw + 5vw))
+}
+
+.logicWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+
+    max-width: 420px;
+}
+
+.header {
+    margin-block-end: 5px;
+}

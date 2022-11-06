@@ -1,12 +1,12 @@
 import { createTheme, ThemeOptions } from '@mui/material';
 
 enum Colors {
-    Main = '#08454a',
-    Secondary = '#e6b656',
-    Background = '#08454a',
+    Main = '#4C5EFF',
+    Secondary = '#3C3F7B',
+    Background = '#F2F3FC',
     Paper = '#085056',
-    TextPrimary = '#fff',
-    TextSecondary = '#rgba(255,255,255,0.54)',
+    TextPrimary = '#3C3F7B',
+    TextSecondary = '#515152',
     Divider = 'rgba(117,117,117,0.51)'
 }
 
@@ -14,7 +14,7 @@ enum Colors {
 const themeOptions: ThemeOptions = {
   palette: {
     primary: {
-      main: Colors.Main,
+      main: Colors.Main
     },
     secondary: {
       main: Colors.Secondary,
@@ -29,6 +29,9 @@ const themeOptions: ThemeOptions = {
     },
     divider: Colors.Divider,
   },
+  typography: {
+    fontFamily: 'Rubik'
+  }
 };
 
 export const theme = createTheme(themeOptions);
