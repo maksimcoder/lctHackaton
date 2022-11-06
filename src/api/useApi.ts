@@ -10,6 +10,13 @@ const useApi = () => {
 		return JSON.stringify(body);
 	}
 
+	function checkAuth() {
+		if (access_token) {
+			return true;
+		}
+		return false;
+	}
+
 	async function createFetch(endpoint: Endpoints, options?: RequestInit) {
 		if (!endpoint) {
 			throw new Error(Errors.NoEndpointProvided);
@@ -39,7 +46,7 @@ const useApi = () => {
 		}
 		const JWTTokens: ILoginResponse = await res.json();
 		StorageService.setTokens(JWTTokens);
-
+		// access_token = StorageService.getTokens(Tokens.access)!;
 		return {
 			code: res.status,
 			message: 'Login successful',
@@ -82,6 +89,7 @@ const useApi = () => {
 		logIn,
 		logOut,
 		refresh,
+		checkAuth,
 	};
 };
 

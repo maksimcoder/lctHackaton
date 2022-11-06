@@ -1,9 +1,9 @@
 import { useTheme, Typography, TextField } from '@mui/material';
-import styles from  './Home.module.scss';
+import styles from './Library.module.scss';
 import { useApi } from 'api/useApi';
 import { useEffect } from 'react';
 
-const Gallery = () => {
+const Library = () => {
 	const theme = useTheme();
 
 	return (
@@ -12,7 +12,7 @@ const Gallery = () => {
 		// </Typography>
 		<TextField>dqwdqw</TextField>
 		// <h1 className={styles.heading}>homepage</h1>
-	)
+	);
 };
 
-export default Gallery;
+export default Library;
