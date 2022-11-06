@@ -1,13 +1,19 @@
 import { ReactElement } from 'react';
 
-import { Home } from 'pages/Home/Home';
+import Login from 'pages/Login';
+import Gallery from 'pages/Gallery';
+import ErrorPage from 'pages/404';
 
 enum ERoutes {
-	Home = '/',
+	Gallery = '/gallery',
+	Login = '/login',
+	NotFoundPage = '',
 }
 
 const RoutesComponents: Record<ERoutes, ReactElement> = {
-	[ERoutes.Home]: <Home />,
+	[ERoutes.Login]: <Login />,
+	[ERoutes.Gallery]: <Gallery/>,
+	[ERoutes.NotFoundPage]: <ErrorPage/>
 };
 
 export { ERoutes, RoutesComponents };
