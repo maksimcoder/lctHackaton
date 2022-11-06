@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Typography, Avatar, Popper, Box, useTheme } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
+import { useApi } from 'api/useApi';
 
 import { Logo, Button } from 'components';
 import AvatarImage from 'assets/images/profile/avatar.png';
@@ -11,6 +13,8 @@ import s from './Header.module.scss';
 
 const Header: React.FC = () => {
 	const theme = useTheme();
+	const { logOut } = useApi();
+	const navigate = useNavigate();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	// const [open, setOpen] = useState(false);
@@ -23,6 +27,13 @@ const Header: React.FC = () => {
 	const activeStyle = {
 		color: theme.palette.primary.main,
 	};
+
+	async function handleLogout() {
+		const req = await logOut();
+		if (req.code === 200) {
+			navigate('/login');
+		}
+	}
 
 	const popperStyles = {
 		display: 'flex',
@@ -95,7 +106,9 @@ const Header: React.FC = () => {
 						component='span'>
 						Анастасия Иванова
 					</Typography>
-					<Button variant='outlined'>Выйти</Button>
+					<Button onClick={handleLogout} variant='outlined'>
+						Выйти
+					</Button>
 				</Box>
 			</Popper>
 		</header>
