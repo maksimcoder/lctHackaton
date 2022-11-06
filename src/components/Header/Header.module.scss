@@ -1,0 +1,48 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
+
+.header {
+    position: relative;
+
+    display: flex;
+    max-height: 75px;
+
+    background-color: white;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.list {
+    display: flex;
+    gap: 70px;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
+
+.listItem {
+    a {
+        text-decoration: none;
+        color: $textColor;
+    }
+}
+
+.profile {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 2vw;
+
+    @include flexCenter();
+    gap: 5px;
+
+    * {
+        cursor: pointer;
+    }
+}
