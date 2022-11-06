@@ -1,6 +1,14 @@
 import { API_BASE } from './const';
 import StorageService from './StorageService';
-import { Endpoints, Errors, Tokens, ILoginResponse, IResult } from './types';
+import {
+	Endpoints,
+	Errors,
+	Tokens,
+	ILoginResponse,
+	IResult,
+	IGenerationLoadResponse,
+	IGeneratorParams,
+} from './types';
 
 const useApi = () => {
 	const access_token = StorageService.getTokens(Tokens.access) || '';
@@ -22,14 +30,17 @@ const useApi = () => {
 			throw new Error(Errors.NoEndpointProvided);
 		}
 
-		const headers: HeadersInit = new Headers();
+		const headers: HeadersInit = new Headers(options?.headers);
 
-		headers.set('Content-Type', 'application/json');
-		headers.set('Authorization', `Bearer ${access_token}`);
+		if (endpoint !== ('generation/load/' as Endpoints)) {
+			headers.set('Content-Type', 'application/json');
+		}
+
+		headers.append('Authorization', `Bearer ${access_token}`);
 
 		const req = await fetch(`${API_BASE}${endpoint}`, {
-			headers,
 			...options,
+			headers,
 		});
 
 		return req;
@@ -46,7 +57,7 @@ const useApi = () => {
 		}
 		const JWTTokens: ILoginResponse = await res.json();
 		StorageService.setTokens(JWTTokens);
-		// access_token = StorageService.getTokens(Tokens.access)!;
+
 		return {
 			code: res.status,
 			message: 'Login successful',
@@ -85,11 +96,43 @@ const useApi = () => {
 		};
 	}
 
+	async function loadGeneration(File: File): Promise<IGenerationLoadResponse> {
+		const formData = new FormData();
+
+		formData.append('files', File);
+
+		const req = await createFetch(
+			`${Endpoints.Generation}${Endpoints.GenerationLoad}` as Endpoints,
+			{
+				method: 'POST',
+				body: formData,
+			}
+		);
+
+		const requestResult = await req.json();
+		return requestResult;
+	}
+
+	async function postGeneratorParams(params: IGeneratorParams) {
+		const { id, capture, ...other } = params;
+		const req = await createFetch(
+			`${Endpoints.Generation}${id}/captures/${capture}/generate` as Endpoints,
+			{
+				method: 'POST',
+				body: JSON.stringify(other),
+			}
+		);
+		const requestResult = await req.json();
+		return requestResult;
+	}
+
 	return {
 		logIn,
 		logOut,
 		refresh,
 		checkAuth,
+		loadGeneration,
+		postGeneratorParams,
 	};
 };
 

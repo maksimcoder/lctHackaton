@@ -10,3 +10,18 @@ export interface ILoginResponse {
 	expires_in: number;
 	token_type: string;
 }
+
+export interface IGenerationLoadResponse {
+	id: string;
+	loaded: number;
+}
+
+export interface IGeneratorParams {
+	type: string;
+	lung: string;
+	lobe: string;
+	count: string;
+	size_mm: string;
+	id: string;
+	capture: number;
+}
