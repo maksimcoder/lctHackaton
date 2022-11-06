@@ -8,6 +8,12 @@ The main logic includes:
 - Library - list of all projects (markup, DICOMs, etc.)
 - Editor - DICOM file editor (markup, save and post)
 - Generator - generating patologies in DICOM files
+
+**You can access code with these creds:**
+
+- login: andr
+- password: 123
+
 ## Run Locally
 Below are the instructions on how to setup the template correctly:
 
